@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Matthew's unfuck_webcam.sh
+# 0ldude's fix_C922.sh
 
-# Designed for use with Logitech c920,
+# Designed for use with Logitech c922,
 #     pls modify grep to work w/ others.
 
-# Using code stolen from github.com/hoaxdream
+# Using code stolen from github.com/hoaxdream and https://github.com/mkrupczak3
 
-device=$(v4l2-ctl --list-devices | grep "C920" -A 1 | grep "/dev/video." -o)
+device=$(v4l2-ctl --list-devices | grep "C922" -A 1 | grep "/dev/video." -o)
 
 v4l2-ctl -d $device --set-ctrl=exposure_auto=1
 v4l2-ctl -d $device --set-ctrl=white_balance_temperature_auto=0
@@ -20,11 +20,7 @@ v4l2-ctl -d $device --set-ctrl=white_balance_temperature=3400
 # Matthew's Focus controls for ~2ft distance
 v4l2-ctl -d $device --set-ctrl=focus_auto=0
 v4l2-ctl -d $device --set-ctrl=focus_absolute=35
-# # Matthew's old tunings
-# v4l2-ctl -d /dev/video0 --set-ctrl=brightness=100
-# v4l2-ctl -d /dev/video0 --set-ctrl=contrast=105
-# v4l2-ctl -d /dev/video0 --set-ctrl=saturation=140
-#
+
 #-----------------------------------------------
 #    List of ctrls for Logitech c920 webcam:
 #-----------------------------------------------
