@@ -1,5 +1,5 @@
-# unfuck_webcam
-A simple shell script to un-fuck your Logitech c920 webcam on Linux.
+# fix_C922
+A simple shell script to fix your Logitech c922 webcam on Linux.
 
 Fixes horrible issues with autofocus, autoexposure, autocolor temperature, brightness, color saturation...
 
@@ -7,29 +7,30 @@ Fixes horrible issues with autofocus, autoexposure, autocolor temperature, brigh
 Don't do this for scripts you don't trust! (Also, why do you trust me?)
 
 
-    sudo wget -O - https://raw.githubusercontent.com/mkrupczak3/unfuck_webcam/main/unfuck_webcam.sh | sudo bash
+    sudo wget -O - https://raw.githubusercontent.com/0ldude/unfuck_webcam/main/unfuck_webcam.sh | sudo bash
 
 ## Too bright, overexposed, or underexposed?:
 Use [unfuck_c920_bright.sh](https://github.com/mkrupczak3/unfuck_c920_bright.sh/blob/main/unfuck_c920_bright.sh) instead, it the same settings but with auto-exposure adjustment enabled
 
     sudo wget -O - https://raw.githubusercontent.com/mkrupczak3/unfuck_c920_bright.sh/main/unfuck_c920_bright.sh | sudo bash
 
-
+## Original Author
+[mkrupczak3](https://github.com/mkrupczak3)
 ## More Info:
 [christitus.com/logitech-c920-linux-driver](https://christitus.com/logitech-c920-linux-driver/)
 
-## unfuck_webcam.sh
+## fix_C922.sh
 
 ```bash
 #!/usr/bin/env bash
-# Matthew's unfuck_webcam.sh
+# 0ldudes's fix_C922.sh
 
-# Designed for use with Logitech c920,
+# Designed for use with Logitech c922,
 #     pls modify grep to work w/ others.
 
 # Using code stolen from github.com/hoaxdream
 
-device=$(v4l2-ctl --list-devices | grep "C920" -A 1 | grep "/dev/video." -o)
+device=$(v4l2-ctl --list-devices | grep "C922" -A 1 | grep "/dev/video." -o)
 
 v4l2-ctl -d $device --set-ctrl=exposure_auto=1
 v4l2-ctl -d $device --set-ctrl=white_balance_temperature_auto=0
@@ -40,19 +41,12 @@ v4l2-ctl -d $device --set-ctrl=sharpness=128
 # white_balance_temperature 0x0098091a (int)    :
 #     min=2000 max=6500 step=1 default=4000 value=6500
 v4l2-ctl -d $device --set-ctrl=white_balance_temperature=3400
-# Matthew's Focus controls for ~2ft distance
-v4l2-ctl -d $device --set-ctrl=focus_auto=0
-v4l2-ctl -d $device --set-ctrl=focus_absolute=35
-# # Matthew's old tunings
-# v4l2-ctl -d /dev/video0 --set-ctrl=brightness=100
-# v4l2-ctl -d /dev/video0 --set-ctrl=contrast=105
-# v4l2-ctl -d /dev/video0 --set-ctrl=saturation=140
-#
+
 #-----------------------------------------------
 #    List of ctrls for Logitech c920 webcam:
 #-----------------------------------------------
 #
-# bobjoe@myconmputer:~$ v4l2-ctl -d /dev/video0 --list-ctrls
+# $ v4l2-ctl -d /dev/video0 --list-ctrls
 #                      brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128
 #                        contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128
 #                      saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128
