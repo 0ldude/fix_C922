@@ -7,12 +7,12 @@ Fixes horrible issues with autofocus, autoexposure, autocolor temperature, brigh
 Don't do this for scripts you don't trust! (Also, why do you trust me?)
 
 
-    sudo wget -O - https://raw.githubusercontent.com/0ldude/unfuck_webcam/main/unfuck_webcam.sh | sudo bash
+    sudo wget -O - https://raw.githubusercontent.com/0ldude/fix_C922/main/fix_C922.sh | sudo bash
 
 ## Too bright, overexposed, or underexposed?:
-Use [unfuck_c920_bright.sh](https://github.com/mkrupczak3/unfuck_c920_bright.sh/blob/main/unfuck_c920_bright.sh) instead, it the same settings but with auto-exposure adjustment enabled
+Use [fix_C922_bright.sh](https://github.com/mkrupczak3/fix_C922_bright.sh/blob/main/fix_C922_bright.sh) instead, it the same settings but with auto-exposure adjustment enabled
 
-    sudo wget -O - https://raw.githubusercontent.com/mkrupczak3/unfuck_c920_bright.sh/main/unfuck_c920_bright.sh | sudo bash
+    sudo wget -O - https://raw.githubusercontent.com/0ldude/fix_C922_bright.sh/main/fix_C922_bright.sh | sudo bash
 
 ## Original Author
 [mkrupczak3](https://github.com/mkrupczak3)
